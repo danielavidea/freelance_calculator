@@ -1,0 +1,289 @@
+/* ---------- Print / PDF ---------- */
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  /* Printed sheets use the brand purple (--accent) for headings, figures and fills. */
+  .sheet .accent {
+    color: var(--accent);
+  }
+
+  .wrap {
+    padding: 0;
+    max-width: none;
+  }
+
+  .sheet {
+    font-size: 11pt;
+    color: #000;
+    line-height: 1.4;
+  }
+
+  .sheet h1 {
+    font-size: 24pt;
+    margin-bottom: 6pt;
+  }
+
+  .sheet h2 {
+    font-size: 13pt;
+    margin: 20pt 0 6pt;
+  }
+
+  .sheet-meta {
+    color: #444;
+    margin-bottom: 16pt;
+  }
+
+  .sheet-hero {
+    font-size: 40pt;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 10pt;
+  }
+
+  .sheet table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .sheet th,
+  .sheet td {
+    padding: 6pt 6pt 6pt 0;
+    border-bottom: 1px solid #bbb;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .sheet th {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #444;
+  }
+
+  .sheet .r {
+    text-align: right;
+    padding-right: 0;
+    white-space: nowrap;
+  }
+
+  .sheet-totals {
+    margin-top: 14pt;
+    width: 60% !important;
+    margin-left: auto;
+  }
+
+  .sheet-warn {
+    margin-top: 10pt;
+    padding: 8pt;
+    border: 2px solid #000;
+    font-weight: 700;
+  }
+
+  tr {
+    break-inside: avoid;
+  }
+
+  /* Quote sheet: logo, title and an accent table header, after the invoice layout. */
+  .quote-sheet {
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: var(--ink);
+    /* Browsers drop background colors when printing unless told not to. */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .qs-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14pt;
+    border-bottom: 1.5pt solid var(--ink);
+  }
+
+  .qs-logo {
+    display: block;
+    height: 54pt;
+    width: auto;
+  }
+
+  .qs-top h1 {
+    font-size: 38pt;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+  }
+
+  .qs-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20pt 0 24pt;
+  }
+
+  .qs-label {
+    display: block;
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .qs-client {
+    display: block;
+    font-size: 16pt;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .qs-est {
+    text-align: right;
+  }
+
+  .qs-est-amount {
+    display: block;
+    font-size: 22pt;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--accent);
+  }
+
+  .qs-date {
+    display: block;
+    margin-top: 4pt;
+    font-size: 9pt;
+    color: var(--muted);
+  }
+
+  .qs-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  /* Same-color borders cover the hairline seams that fractional column widths leave between cells. */
+  .qs-table thead tr {
+    background: var(--accent);
+  }
+
+  .qs-table th {
+    padding: 8pt 10pt;
+    border: 1px solid var(--accent);
+    color: #fff;
+    font-size: 9pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  .qs-table td {
+    padding: 9pt 10pt;
+    border-bottom: 0.5pt solid var(--line);
+    vertical-align: top;
+  }
+
+  .qs-table .c {
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .qs-table .r {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .qs-name {
+    display: block;
+    font-weight: 600;
+  }
+
+  .qs-detail {
+    display: block;
+    font-size: 8.5pt;
+    color: var(--muted);
+  }
+
+  .qs-bottom {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16pt;
+  }
+
+  .qs-totals {
+    width: 58%;
+  }
+
+  .qs-totals > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12pt;
+    padding: 5pt 10pt;
+  }
+
+  .qs-totals .qs-grand {
+    margin-top: 6pt;
+    padding: 9pt 10pt;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12pt;
+    font-weight: 800;
+  }
+
+  .qs-note {
+    margin-top: 8pt;
+    padding: 0 10pt;
+    font-size: 8.5pt;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  .qs-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 56pt;
+    padding-top: 12pt;
+    border-top: 0.5pt solid var(--ink);
+  }
+
+  .qs-thanks {
+    font-size: 12pt;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .qs-by {
+    text-align: right;
+  }
+
+  .qs-by strong {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .qs-by span {
+    font-size: 8.5pt;
+    color: var(--muted);
+  }
+}
