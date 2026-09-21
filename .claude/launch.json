@@ -1,11 +1,1 @@
-{
-  "version": "0.0.1",
-  "configurations": [
-    {
-      "name": "halo-dev",
-      "runtimeExecutable": "/Users/danielahernandezvidea/websiteai/.devtools/run-dev.sh",
-      "runtimeArgs": [],
-      "port": 5173
-    }
-  ]
-}
+
